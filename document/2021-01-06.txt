@@ -1,0 +1,75 @@
+***********************************************************************************************************************************************************************************************************
+
+1. Changed the Author: As i was facing an issue that the commits that i made from git bash were being done by my other id instead to the id on which the repository was created and the commands are following.
+	commands: $ git config --global user.name "tarak suthar"
+		  $ git config --global user.email "tarak.suthar1999@gmail.com"
+   for every past commits: $ git commit --amend --author="tarak suthar <tarak.suthar1999@gmail.com>"
+
+2. Dealing with branches:Created two branches one and two then edited the content from one file(commited and pushed) and merged it with the main thus now both have edited file except the other(two) branch.
+   used command to pull the changes changes done by other file: $ git pull
+
+
+*****************************git log************************************
+ 
+git log: 
+1.The git log command displays a record of the commits in a Git repository.
+2.You can see the hash of each Git commit, the message associated with each commit, and more metadata. 
+3.This command is useful for displaying the history of a repository.
+
+commands:
+	$ git log
+
+->filter by recent:last three commits
+	$ git log -n 3
+
+->filter by Author or Committer
+	$ git log --author="tarak suthar"
+
+->filter by Date
+	$ git log --after="2019-3-2"
+
+->Start at a specific commit
+	To start git log at a specific commit, add the SHA
+
+	$ git log 7752b22
+
+	This will display the commit with the SHA 7752b22 and all of the commits made before that commit.
+
+—>graph: The --graph flag enables you to view your git log as a graph.
+	$ git log --graph
+
+	
+
+->git shortlog: provides summary of git log
+	$ git shortlog
+
+***************************git diff****************************************
+->Diff command is used in git to track the difference between the changes made on a file.
+
+	$ git diff
+
+->Highlighting changes: The first way of highlighting changes is the special mode that git diffproposes: ‐‐color-words.
+ It tokenizes added and removed lines by whitespace and then diffs those.
+	$ git diff --color-words
+
+
+->Comparison of the files from two branches:In order to compare a specific file in branches, 
+you should pass in the path of the file as the third argument to git diff.
+
+	$ git diff master new_branch ./test.txt
+
+****************************git reset**************************************
+->Git Reset: The git reset command allows you to RESET your current head to a specified state. 
+
+->unstage a file: it will remove the file from staging area
+	$ git reset HEAD FILE-TO-UNSTAGE
+->Reset a branch to a prior commit: The following command resets your current branch's HEAD to the given COMMIT and updates the index.
+	$ git reset MODE COMMIT
+
+->Different modes:
+
+	--soft: does not reset the index file or working tree, but resets HEAD to commit. 
+	--mixed: resets the index but not the working tree and reports what has not been updated
+	--hard: resets the index and working tree. Any changes to tracked files in the working tree since commit are discarded
+	--merge: resets the index and updates the files in the working tree that are different between commit and HEAD
+	--keep: resets index entries and updates files in the working tree that are different between commit and HEAD.
