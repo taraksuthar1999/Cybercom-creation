@@ -1,0 +1,18 @@
+*************************************************************************************************************************************************************
+
+-> Git Revert : The git revert command can be considered an 'undo' type command, however, it is not a traditional undo operation.
+Instead of removing the commit from the project history, it figures out how to invert the changes introduced by the
+commit and appends a new commit with the resulting inverse content. This prevents Git from losing history,
+which is important for the integrity of your revision history.
+	 Git revert also takes a specified commit, however, git revert does not move ref pointers to this commit.
+A revert operation will take the specified commit, inverse the changes from that commit, and create a new "revert commit". 
+The ref pointers are then updated to point at the new revert commit making it the tip of the branch.
+ 
+command: $ git revert HEAD
+which will revert the last commit done and add a new revert commit
+
+
+-> Git rebase : Rebasing is the process of moving or combining a sequence of commits to a new base commit.
+
+command: $ git rebase
+Git rebase in standard mode will automatically take the commits in your current working branch and apply them to the head of the passed branch.
