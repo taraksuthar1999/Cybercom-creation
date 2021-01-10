@@ -1,0 +1,46 @@
+ .card {
+
+            margin-right: 15px;
+            width: 215px;
+            background-color: lightgrey;
+            border-style: ridge;
+        }
+
+
+
+        .container {
+
+
+            margin: 10%;
+            align-items: center;
+            justify-content: center;
+            /* margin-top: 10%;
+            margin-bottom: 5%;*/
+        }
+
+        .caption {
+            text-align: center;
+            padding: 2%;
+            margin: 0;
+            color: grey;
+            background-color: lightgrey;
+            font-size: 10px;
+        }
+
+        .card-container {
+            margin: 0;
+            display: flex;
+
+        }
+
+        p {
+            border-bottom: 1px solid grey;
+            padding-bottom: 5px;
+            color: grey;
+        }
+
+        img {
+
+            width: 100%;
+
+        }
