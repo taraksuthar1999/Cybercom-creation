@@ -1,0 +1,41 @@
+********************************************************************
+1. execution contexts:
+	code is executed unless its inside the function.
+	for every function is encountered in the code a new execution context is created on top of the global execution context like a stack and as the execution gets done it pops off from the stack.
+
+
+2. hoisting:
+
+example:
+ex1.	console.log(abc());
+	function abc(){ 
+		return "hello";
+	}
+	o/p: hello
+	explanation: this is function declaration here during variable object creation phase the data is stored in object.
+
+ex2. 	console.log(abc());
+	var abc = function(){
+		return "hello";
+
+	}
+	
+	-> here it will show that abc is not function.
+	-> this way is known is function expression.
+
+ex3. 	x=9
+	console.log(x);
+	var x;
+	
+	o/p: 9
+3. Scope:
+	here the scope of the variable means where the defined variable can be accessed.
+	if the function is inside another function then the inner function can access the variable declared in the parent scope and this the the direction in which the scope chain works not the other way.
+	scopechain is not dependent on the execution context but rather on how the functions are written.
+
+4. "this" keyword:
+	the this keyword assigned values only when the method is called.
+
+5. objects:
+	 
+ 
