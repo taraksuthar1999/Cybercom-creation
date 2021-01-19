@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .form-container {
+            margin: auto;
+            width: 80%;
+        }
+
+        table {
+            width: 100%;
+
+
+
+        }
+
+        td {
+            padding: 7px;
+        }
+
+        .tableContent {
+            padding: 7px;
+            margin-bottom: 15px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <form action="success.html" method="post">
+            <div class="tableContent">
+                <table>
+
+                    <tr>
+                        <td>
+                            <label for="firstName">First Name</label>
+                        </td>
+                        <td>
+                            <input type="text" id="firstName" class="firstName">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="lastName">Last Name</label>
+                        </td>
+                        <td>
+                            <input type="text" id="lastName" class="lastName">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="street">Street</label>
+                        </td>
+                        <td>
+                            <input type="text" id="street" class="street">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="city">City</label>
+                        </td>
+                        <td>
+                            <input type="text" id="city" class="city">
+                        </td>
+                    </tr>
+
+
+                </table>
+            </div>
+            <div class="tableContent">
+                <table>
+
+                    <tr>
+                        <td>
+                            <label for="biography">Biography</label>
+                        </td>
+                        <td>
+                            <textarea id="biography" class="biography"></textarea>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="image">Image</label>
+                        </td>
+                        <td>
+                            <input type="file" accept=".jpg" id="image" class="image">
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="ageGroup">Age Group</label>
+                        </td>
+                        <td>
+                            <select class="ageGroup" id="ageGroup">
+                                <option value="">0 t0 9 Years</option>
+                                <option value="">10 to 12 Years</option>
+                            </select>
+                        </td>
+                    </tr>
+
+
+                </table>
+            </div>
+            <div class="tableContent">
+                <table>
+
+                    <tr>
+                        <td>
+                            <label for="hobbies">Hobbies</label>
+                        </td>
+                        <td>
+                            <textarea id="hobbies" class="hobbies"></textarea>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="fav-car">Favourite car?</label>
+                        </td>
+                        <td>
+                            <select class="fav-car" id="fav-car">
+                                <option value="">Volvo</option>
+                                <option value="">Farrari</option>
+                                <option value="">Audi</option>
+                                <option value="">BMW</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="transport">Favourite public transport?</label>
+                        </td>
+                        <td>
+                            <select class="transport" id="transport">
+                                <optgroup label="Ground">
+                                    <option value="train">train</option>
+                                    <option value="bus">bus</option>
+                                </optgroup>
+                                <optgroup label="Water">
+                                    <option value="train">Ship</option>
+                                    <option value="bus">submarine</option>
+                                </optgroup>
+                                <optgroup label="Air">
+                                    <option value="train">Plane</option>
+                                    <option value="bus">halicoptor</option>
+                                </optgroup>
+                            </select>
+                        </td>
+                    </tr>
+
+
+                </table>
+            </div>
+
+            <input type="submit" label="submit">
+            <input type="reset" label="reset">
+
+
+        </form>
+    </div>
+</body>
+
+</html>
