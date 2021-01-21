@@ -31,7 +31,7 @@ function displayUserData() {
         else {
             console.log("else");
             for (var i in User) {
-                document.getElementById("displaytable").innerHTML = document.getElementById("displaytable").innerHTML + "<tr><td>" + User[i].name + "</td><td>" + User[i].email + "</td><td>" + User[i].password + "</td><td>" + User[i].birthdate + "</td><td><button id=" + i + " onclick='editUser(id)'>edit</button></td><td><button>delete</button></td></tr>";
+                document.getElementById("displaytable").innerHTML = document.getElementById("displaytable").innerHTML + "<tr><td>" + User[i].name + "</td><td>" + User[i].email + "</td><td>" + User[i].password + "</td><td>" + User[i].birthdate + "</td><td><button id=" + i + " onclick='editUser(id)'>edit</button></td><td><button id=" + i + " onclick='deleteUser(id)'>delete</button></td></tr>";
 
             }
 
@@ -67,6 +67,12 @@ function updateUser(id) {
     User[id].email = document.getElementById("email").value;
     User[id].password = document.getElementById("password").value;
     User[id].birthdate = document.getElementById("Birthdate").value;
+    localStorage.setItem("user", JSON.stringify(User));
     console.log(User[id].name);
     window.location.href = "User.html";
+}
+function deleteUser(id) {
+    console.log(id);
+    localStorage.removeItem('id');
+    console.log(User[id]);
 }

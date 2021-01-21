@@ -44,6 +44,15 @@
 
 
         }
+
+        td {
+            padding: 7px;
+        }
+
+        table {
+            margin: auto;
+            width: 70%;
+        }
     </style>
     <script src="User.js"></script>
 </head>
@@ -61,10 +70,10 @@
                 <a class="active" href="User.html">Users</a>
             </li>
             <li>
-                <a href="#contact">Login Session</a>
+                <a href="UserSession.html">Login Session</a>
             </li>
             <li>
-                <a href="#about">Logout</a>
+                <a href="Login.html">Logout</a>
             </li>
         </ul>
     </div>
@@ -83,7 +92,14 @@
         <h2>User List</h2>
         <div>
             <table id="displaytable" border="1px">
-
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>BirthDate</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
             </table>
         </div>
     </div>

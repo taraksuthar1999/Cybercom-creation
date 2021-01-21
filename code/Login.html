@@ -7,16 +7,42 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="login.js"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        table {
+            margin: auto;
+        }
+    </style>
 </head>
 
 <body onload="hideReg()">
     <h1>Login</h1>
     <form>
-        <label for="email">Email</label>
-        <input type="email" id="email">
-        <br>
-        <label for="password">Password</label>
-        <input type="password" id="password">
+        <table>
+            <tr>
+                <td>
+                    <label for="email">Email</label>
+                </td>
+                <td>
+                    <input type="email" id="email">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="password">Password</label>
+                </td>
+                <td>
+                    <input type="password" id="password">
+                </td>
+            </tr>
+
+
+
+
+        </table>
         <br>
         <input type="button" onclick="loginAdmin()" value="login">
         <br>
