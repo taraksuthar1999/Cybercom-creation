@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        header {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #4CAF50;
+        }
+
+        .form-conatiner {
+            width: 80%;
+
+
+        }
+    </style>
+    <script src="User.js"></script>
+</head>
+
+<body onload="displayUserData()">
+    <header>
+        <h1>Dashboard</h1>
+    </header>
+    <div>
+        <ul>
+            <li>
+                <a href="Dashboard.html">Dashboard</a>
+            </li>
+            <li>
+                <a class="active" href="User.html">Users</a>
+            </li>
+            <li>
+                <a href="#contact">Login Session</a>
+            </li>
+            <li>
+                <a href="#about">Logout</a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h2>Add User</h2>
+        <div class="form-container">
+            <input type="text" id="name" placeholder="Name">
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <input type="date" id="Birthdate" placeholder="Birthdate">
+            <input type="button" onclick="addUser()" value="Add">
+        </div>
+    </div>
+    <div>
+        <h2>User List</h2>
+        <div>
+            <table id="displaytable" border="1px">
+
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
