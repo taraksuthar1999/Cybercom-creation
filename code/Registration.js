@@ -14,6 +14,6 @@ function registerAdmin() {
     adminObj.city = document.getElementById("selectCity").value;
     adminObj.state = document.getElementById("selectState").value;
     admin.push(adminObj);
-    localStorage.setItem("admin", JSON.stringify(admin));
+    localStorage.setItem("admin", JSON.stringify(admin));//stores data on local storage
     window.location.href = "Login.html";
 }

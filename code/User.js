@@ -1,6 +1,6 @@
 var User = [];
 
-function addUser() {
+function addUser() {       //to add new user data into localstorage
     if (localStorage.getItem('user')) {
         User = JSON.parse(localStorage.getItem('user'));
     }
