@@ -1,2 +1,1 @@
 # Cybercom-creation
-Cybercom training 
