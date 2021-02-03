@@ -112,16 +112,26 @@
     <div class="output">
         <h1>Output</h1>
         <?php
+           
             if($_SERVER["REQUEST_METHOD"]=="POST"){
+                
+                //////////database connection///////
+                if(!$conn = mysqli_connect('localhost','root','','phppractice')){
+                    die('could not connect');
+                }
+               //////////////////////////////////////
                 $name = htmlentities($_POST['name']);
                 $password = htmlentities($_POST['password']);
                 $address = htmlentities($_POST['address']);
                 $checkbox = $_POST['checkbox'];
+                $gamestring = htmlentities(implode(',', $checkbox));
                 $gender = $_POST['gender'];
+                $genderstring =htmlentities(implode(',',$gender));
                 $file = $_FILES['file']['name'];
-                $age = htmlentities($_POST['age']);
+
+                $age = (int) htmlentities($_POST['age']);
                 if(!empty($name)){
-                    echo 'Name: '.$name.'<br>';
+                    echo '<br>Name: '.$name.'<br>';
                 }
                 if(!empty($password)){
                     echo 'Password: '.$password.'<br>';
@@ -129,13 +139,13 @@
                 if(!empty($address)){
                     echo 'Address: '.$address.'<br>';
                 }
-                $gamestring = implode(',', $checkbox);
-                echo 'Games: '.htmlentities($gamestring);
+                
+                echo 'Games: '.$gamestring;
               /*  foreach($checkbox as $game){
                     echo  htmlentities($game).' ';
                 }*/
-                $genderstring = implode(',',$gender);
-                echo '<br>Gender: '.htmlentities($genderstring);
+               
+                echo '<br>Gender: '.$genderstring;
                 /*foreach($gender as $x){
                     echo  htmlentities($x).' ';
                 }*/
@@ -143,6 +153,38 @@
                     echo '<br>Age: '.$age;
                 }
                 echo '<br>File Name: '.$file;
+
+                //////////////////file upload//////////////
+                $target = '/projects/Cybercom-creation/code/2021-02-01/practiceform1/uploads/';
+                $target = $_SERVER['DOCUMENT_ROOT'].$target.basename($_FILES['file']['name']);
+                if(move_uploaded_file($_FILES['file']['tmp_name'], $target)) 
+                { 
+                    echo '<br>file uploaded<br>';
+                    //Tells you if its all ok 
+                    //echo "The file ". basename( $_FILES['uploaded_file']['name']). " has been uploaded, and your information has been added to the directory"; 
+                } 
+                else 
+                { 
+                    //Gives and error if its not 
+                    //echo "Sorry, there was a problem uploading your file."; 
+                } 
+
+                ////////////database entery////////////////
+               
+               $input_name= mysqli_real_escape_string($conn, $name);
+               $input_password= mysqli_real_escape_string($conn, $password);
+               $input_address= mysqli_real_escape_string($conn, $address);
+               $input_game= mysqli_real_escape_string($conn, $gamestring);
+               $input_gender= mysqli_real_escape_string($conn, $genderstring);
+               $input_age= mysqli_real_escape_string($conn, $age);
+               $input_file= mysqli_real_escape_string($conn, $file);
+               $query = "INSERT INTO form1 (name,password,address,game,gender,age,file_name) VALUES ('$input_name','$input_password','$input_address','$input_game','$input_gender','$input_age','$input_file')";
+                if($query_run = mysqli_query($conn,$query)){
+                    echo 'Query success';
+                }else{
+                    echo 'Query failed';
+                }
+
 
             }
         ?>
