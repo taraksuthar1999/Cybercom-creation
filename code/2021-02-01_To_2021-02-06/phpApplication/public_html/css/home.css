@@ -1,0 +1,17 @@
+.content{
+    margin:3%;
+}
+.content-head-text{
+    border-bottom:1px solid black;
+}
+a.nav-link:hover{
+    color:lightgray;
+}
+.tab{
+    width:80%;
+    margin:0;
+    
+}
+.form-container{
+    margin:auto;    
+}
