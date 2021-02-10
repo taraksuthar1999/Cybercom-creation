@@ -7,7 +7,7 @@
       <a class="nav-link" href="home.php">Home</a>
     </li>
     <li class="nav-item ">
-      <a class="nav-link" href="contacts.php">Contacts</a>
+      <a class="nav-link" href="testcontacts.php">Contacts</a>
     </li>
     
   </ul>
