@@ -1,6 +1,5 @@
 <?php
-
-class Category
+class Catgory
 {
     private $servername = "localhost";
     private $username = "root";
@@ -22,33 +21,104 @@ class Category
         }
     }
 
-		// Insert customer data into customer table
-    public function insertData($post)
+    public function fileupload($post)
     {
-
-        $name = $this->con->real_escape_string($_POST['name']);
-        $email = $this->con->real_escape_string($_POST['email']);
-        $phone = $this->con->real_escape_string($_POST['phone']);
-        $title = $this->con->real_escape_string(($_POST['title']));
-        $datetime = $this->con->real_escape_string($_POST['datetime']);
-
-
-        $query = "INSERT INTO contacts(id,name,email,phone,title,datetime) VALUES(NULL,'$name','$email',$phone,'$title','$datetime')";
-
-        $sql = $this->con->query($query);
-        if ($sql == true) {
-            header("Location:contacts.php?msg1=insert");
+        $target = '/projects/Cybercom-creation/code/Blog Application/public_html/uploads/';
+        $target = $_SERVER['DOCUMENT_ROOT'] . $target . basename($_FILES['file']['name']);
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $target)) {
+            return true;
+            //Tells you if its all ok 
+            //echo "The file ". basename( $_FILES['uploaded_file']['name']). " has been uploaded, and your information has been added to the directory"; 
         } else {
-            $error = "failed";
-            echo "Registration failed try again!";
-
+            return false;
+            //Gives and error if its not 
+            //echo "Sorry, there was a problem uploading your file."; 
         }
     }
+    public function validate($post)
+    {
+       // $error = new array
+        if (empty($_POST['title'])) {
+            return false;
+        } else if (empty($_POST['content'])) {
+            return false;
+        } else if (empty($_POST['url'])) {
+            return false;
+        } else if (empty($_POST['publisheddate'])) {
+            return false;
 
-		// Fetch customer records for show listing
+        } else {
+            return true;
+        }
+    }
+    public function addBlog($post)
+    {
+        if ($this->validate($post)) {
+            $title = $this->con->real_escape_string($_POST['title']);
+            $content = $this->con->real_escape_string($_POST['content']);
+            $url = $this->con->real_escape_string($_POST['url']);
+            $publisheddate = $this->con->real_escape_string(($_POST['publisheddate']));
+            $categorydata = $_POST['category'];
+            $categorystring = htmlentities(implode(',', $categorydata));
+            $Category = $this->con->real_escape_string($categorydata);
+            $filename = $_FILES['file']['name'];
+            $file = $this->con->real_escape_string($filename);
+            $filecheck = $this->fileupload($post);
+
+
+
+            $query = "INSERT INTO blog_post(id,user_id,title,content,url,publisheddate,category,file) VALUES (NULL,'1','$title','$content','$url','$publisheddate','$Category','$file')";
+
+            $sql = $this->con->query($query);
+            if ($sql == true) {
+                header("Location:blogPostListing.php?msg1=success");
+            } else {
+                $error = "failed";
+                echo "Registration failed try again!";
+
+            }
+        } else {
+            echo 'error';
+        }
+
+
+    }
+    public function updateBlog($post)
+    {
+        if ($this->validate($post)) {
+            $title = $this->con->real_escape_string($_POST['title']);
+            $content = $this->con->real_escape_string($_POST['content']);
+            $url = $this->con->real_escape_string($_POST['url']);
+            $publisheddate = $this->con->real_escape_string(($_POST['publisheddate']));
+            $categorydata = $_POST['category'];
+            $categorystring = htmlentities(implode(',', $categorydata));
+            $Category = $this->con->real_escape_string($categorydata);
+            $filename = $_FILES['file']['name'];
+            $file = $this->con->real_escape_string($filename);
+            $filecheck = $this->fileupload($post);
+
+            $id = $this->con->real_escape_string($_POST['id']);
+
+            $query = "UPDATE blog_post SET title='$title',content='$content',url='$url',publisheddate='$publisheddate',catagory='$Category',file='$file' WHERE id ='$id'";
+
+            $sql = $this->con->query($query);
+            if ($sql == true) {
+                header(" Location : blogPostListing.php?msg1 = update ");
+            } else {
+                $error = " failed ";
+                echo " Registration failed try again !";
+
+            }
+        } else {
+            echo 'error';
+        }
+
+
+    }
+    		// Fetch customer records for show listing
     public function displayData()
     {
-        $query = "SELECT * FROM contacts";
+        $query = " SELECT * FROM blog_post ";
         $result = $this->con->query($query);
         if ($result->num_rows > 0) {
             $data = array();
@@ -57,60 +127,35 @@ class Category
             }
             return $data;
         } else {
-            echo "No found records";
+            echo " No found records ";
         }
     }
-
-		// Fetch single data for edit from customer table
+        
+                // Fetch single data for edit from customer table
     public function displyaRecordById($id)
     {
-        $query = "SELECT * FROM contacts WHERE id = '$id'";
+        $query = " SELECT * FROM contacts WHERE id = '$id' ";
         $result = $this->con->query($query);
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             return $row;
         } else {
-            echo "Record not found";
+            echo " Record not found ";
         }
     }
-
-		// Update customer data into customer table
-    public function updateRecord($postData)
-    {
-        $name = $this->con->real_escape_string($_POST['name']);
-        $email = $this->con->real_escape_string($_POST['email']);
-        $phone = $this->con->real_escape_string($_POST['phone']);
-        $title = $this->con->real_escape_string(($_POST['title']));
-        $datetime = $this->con->real_escape_string($_POST['datetime']);
-
-
-        $id = $this->con->real_escape_string($_POST['id']);
-        if (!empty($id) && !empty($postData)) {
-            $query = "UPDATE contacts SET name = '$name', email = '$email', phone = '$phone', title = '$title', datetime = '$datetime' WHERE id = '$id'";
-            $sql = $this->con->query($query);
-            if ($sql == true) {
-                header("Location:contacts.php?msg2=update");
-            } else {
-                echo "Registration updated failed try again!";
-            }
-        }
-
-    }
-
-
-		// Delete customer data from contact table
     public function deleteRecord($id)
     {
-        $query = "DELETE FROM contacts WHERE id = '$id'";
+        $query = " DELETE FROM blog_post WHERE id = '$id' ";
         $sql = $this->con->query($query);
         if ($sql == true) {
-            header("Location:contacts.php?msg3=delete");
+            header(" Location :  blogPostListing.php. php ? msg3 = delete ");
         } else {
-            echo "Record does not delete try again";
+            echo " Record does not delete try again ";
         }
     }
 
+
+
+
 }
-
-
 ?>
