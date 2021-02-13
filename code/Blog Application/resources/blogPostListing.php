@@ -41,7 +41,7 @@ if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
     if (isset($_GET['msg2']) == "update") {
         echo "<div class='alert alert-success alert-dismissible'>
               <button type='button' class='close' data-dismiss='alert'>&times;</button>
-              Your Contact updated successfully
+              Your blog updated successfully
             </div>";
     }
     if (isset($_GET['msg3']) == "delete") {
@@ -81,7 +81,7 @@ if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
                 <td>
                     <a class="btn btn-warning" href="editBlogPost.php?editId=<?php echo $row['id'] ?>">
                     <i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>&nbsp
-                    <a class="btn btn-danger" id ="<?php echo $row['id'] ?>" >
+                    <a class="btn btn-danger" href="blogPostListing.php?deleteid=<?php echo $row['id'] ?>" >
                     <i class="fa fa-trash" aria-hidden="true"></i>Delete
                     </a>
                 </td>
@@ -94,7 +94,7 @@ if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
         
 
     </div>
-    <script>
+   <!--<script>
         
                 $(document).ready(function() {
                     $('.btn-danger').click(function() {
@@ -116,7 +116,7 @@ if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
             }
         });
     });
-</script>
+</script>-->
     
 </body>
 </html>

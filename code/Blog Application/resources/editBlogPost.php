@@ -15,7 +15,7 @@ if (isset($_GET['editId']) && !empty($_GET['editId'])) {
 
   // 
 if (isset($_POST['update'])) {
-    $blogObj->updateRecord($_POST);
+    $blogObj->updateBlog($_POST);
 }
 
 ?>
@@ -36,28 +36,28 @@ if (isset($_POST['update'])) {
     <header><?php require 'header.php'; ?></header>
     <div class ='content'>
         <div class="content-head-text">
-        <b>Edit Blog Post #</b><br>
+        <b>Edit Blog Post #<?php echo $row['id'] ?></b><br>
         </div>
         <br>
         <div class = "form-container">
-            <form action="addBlogPost.php" method="POST" enctype="multipart/form-data">
+            <form action="editBlogPost.php" method="POST" enctype="multipart/form-data">
                 <table class="tab" cellpadding="20px">
                     
                     <tr>
                         <td><label for="title">Title</label></td>
-                        <td><input class ="input" type="text" name="title" id="title" value="<?php echo $_POST['title'] ?>" required></td>
+                        <td><input class ="input" type="text" name="title" id="title" value="<?php echo $row['title'] ?>" required></td>
                     </tr>
                     <tr>
                         <td><label for="content"></label>Content</td>
-                        <td><textarea name="content" id="content" cols="50" rows="5" value="<?php echo $_POST['content'] ?>" required></textarea> </td>
+                        <td><textarea name="content" id="content" cols="50" rows="5" value="" required><?php echo $row['content'] ?></textarea> </td>
                     </tr>
                     <tr>
                         <td><label for="url">Url</label></td>
-                        <td><input class ="input" type="text" name="url" id="url" value="<?php echo $_POST['url'] ?>" required></td>
+                        <td><input class ="input" type="text" name="url" id="url" value="<?php echo $row['url'] ?>" required></td>
                     </tr>
                     <tr>
                         <td><label for="publisheddate">Published At</label></td>
-                        <td><input class ="input" type="datetime-local" name="publisheddate" id="publisheddate" value="<?php echo $_POST['publishedate'] ?>" required></td>
+                        <td><input class ="input" type="datetime-local" name="publisheddate" id="publisheddate" value="<?php echo $date ?>" required></td>
                     </tr>
                     <tr>
                         <td><label>Category</label></td>
@@ -69,7 +69,7 @@ if (isset($_POST['update'])) {
                     </tr>
                     <tr>
                         <td><label for="file">Upload</label></td>
-                        <td><input class ="input" type="file" name="file" id="file" value="<?php echo $_POST['file'] ?>" required></td>
+                        <td><input class ="input" type="file" name="file" id="file" value="<?php echo $row['file'] ?>" required><?php echo $row['file'] ?></td>
                     </tr>
                     
                    

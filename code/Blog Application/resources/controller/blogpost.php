@@ -60,7 +60,7 @@ class Blogpost
             $publisheddate = $this->con->real_escape_string(($_POST['publisheddate']));
             $categorydata = $_POST['category'];
             $categorystring = htmlentities(implode(',', $categorydata));
-            $Category = $this->con->real_escape_string($categorydata);
+            $Category = $this->con->real_escape_string($categorystring);
             $filename = $_FILES['file']['name'];
             $file = $this->con->real_escape_string($filename);
             $filecheck = $this->fileupload($post);
@@ -134,7 +134,7 @@ class Blogpost
                 // Fetch single data for edit from customer table
     public function displyaRecordById($id)
     {
-        $query = " SELECT * FROM contacts WHERE id = '$id' ";
+        $query = " SELECT * FROM blog_post WHERE id = '$id' ";
         $result = $this->con->query($query);
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -148,7 +148,7 @@ class Blogpost
         $query = " DELETE FROM blog_post WHERE id = '$id' ";
         $sql = $this->con->query($query);
         if ($sql == true) {
-            header(" Location :  blogPostListing.php. php ? msg3 = delete ");
+            header(" Location:blogPostListing.php?msg3=delete ");
         } else {
             echo " Record does not delete try again ";
         }
