@@ -1,10 +1,19 @@
+<div class="col">
+<div class="row" id="messageHtml"></div>
+<div class="row" id='htmlGrid'>
 
 <?php 
 
 $children = $this->getChildren();
-foreach ($children as $key => $value) {
-    print_r($children[$key]->toHtml());
+if (!$this->getChildren()) {
+    echo "Sorry! No content.";
+} else {
+    foreach ($children as $key => $value) {
+        print_r($children[$key]->toHtml());
+    }
 }
 
 ?> 
-<!-- <div id='htmlGrid'></div> -->
+
+</div>    
+</div>

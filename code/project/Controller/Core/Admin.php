@@ -103,6 +103,16 @@ class Admin
         return "http://localhost:8080/projects/project/index.php?{$queryString}";
 
     }
+    public function responseJson($status, $msg, $element)
+    {
+        $response = [
+            'status' => $status,
+            'message' => $msg,
+            'element' => $element
+        ];
+        header("Content-type:application/json; charset=UTF-8");
+        echo json_encode($response);
+    }
 
 }
 ?>

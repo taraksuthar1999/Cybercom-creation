@@ -128,8 +128,8 @@
 <div class="row fit">
     <div class="col-3"><?php print_r($this->children['Left']->toHtml()); ?></div>
     <div class="col-9">
-        <?php print_r($this->createBlock('Block\Layout\Message')->toHtml()); ?>    
-        <?php print_r($this->children['Content']->toHtml()); ?>
+        <?php echo ($this->children['Message']->toHtml()); ?>    
+        <?php echo ($this->children['Content']->toHtml()); ?>
     </div>
 </div>
 
@@ -138,12 +138,12 @@
         $('#update').click(function(){
             $('#update').closest('form').attr('action','<?php echo $this->getUrl()->getUrl('save', 'product\media') ?>');
         });
-        $('#update').click(function(){
-            $('#update').closest('form').attr('action','<?php echo $this->getUrl()->getUrl('save', 'product\media') ?>');
+        $('#upload').click(function(){
+            $('#upload').closest('form').attr('action','<?php echo $this->getUrl()->getUrl('save', 'product\media') ?>');
         });
         $('#remove').click(function(){
            
-            $('#upload').closest('form').attr('action','<?php echo $this->getUrl()->getUrl('remove', 'product\media') ?>');
+            $('#remove').closest('form').attr('action','<?php echo $this->getUrl()->getUrl('remove', 'product\media') ?>');
         });
         $('#priceUpdate').click(function(){
             $('#priceUpdate').closest('form').attr('action','<?php echo $this->getUrl()->getUrl('update', 'product\groupPrice') ?>');

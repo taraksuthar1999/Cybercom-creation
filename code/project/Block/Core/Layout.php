@@ -13,12 +13,12 @@ class Layout extends \Block\Core\Template
         parent::__construct();
         $this->setTemplate('view/layout/oneColumnStructure.php');
 
-        $this->prepareChildren('Content', \Mage::getBlock('Block\Layout\Content'));
-        $this->prepareChildren('Header', \Mage::getBlock('Block\Layout\Header'));
-        $this->prepareChildren('Message', \Mage::getBlock('Block\Layout\Message'));
-        $this->prepareChildren('Left', \Mage::getBlock('Block\Layout\Left'));
+        $this->prepareChildren('Content', \Mage::getBlock('Block\Core\Layout\Content'));
+        $this->prepareChildren('Header', \Mage::getBlock('Block\Core\Layout\Header'));
+        $this->prepareChildren('Message', \Mage::getBlock('Block\Core\Layout\Message'));
+        $this->prepareChildren('Left', \Mage::getBlock('Block\Core\Layout\Left'));
 
-        $this->prepareChildren('Footer', \Mage::getBlock('Block\Layout\Footer'));
+        $this->prepareChildren('Footer', \Mage::getBlock('Block\Core\Layout\Footer'));
 
     }
     public function getHeader()

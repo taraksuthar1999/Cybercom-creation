@@ -1,4 +1,11 @@
 <?php
+spl_autoload_register(function ($className) {
+    $className = str_replace('\\', ' ', $className);
+    $className = ucwords($className);
+    $className = str_replace(' ', '\\', $className);
+    $className = $className . '.php';
+    require_once($className);
+});
 class Mage
 {
     public static function init()
@@ -47,7 +54,7 @@ class Mage
 
     public static function getModel($className)
     {
-        self::loadFileByClassName($className);
+        //self::loadFileByClassName($className);
         $className = str_replace('\\', ' ', $className);
         $className = ucwords($className);
         $className = str_replace(' ', '\\', $className);

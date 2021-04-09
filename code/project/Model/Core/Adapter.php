@@ -91,7 +91,9 @@ class Adapter
         if (!$this->isConnected()) {
             $this->connection();
         }
-        $result = $this->getConnect()->query($query);
+        if (!$result = $this->getConnect()->query($query)) {
+            return false;
+        }
         $row = $result->fetch_assoc();
         if (!$row) {
             return false;
@@ -100,12 +102,16 @@ class Adapter
     }
     public function delete($query)
     {
+
         if (!$this->getConnect()) {
             $this->connection();
         }
         if (!$this->getConnect()->query($query)) {
+
             return false;
+
         }
+
         return true;
     }
 

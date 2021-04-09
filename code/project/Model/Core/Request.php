@@ -32,11 +32,12 @@ class Request
     }
     public function getActionName()
     {
+
         return $this->getGet('a', 'index');
     }
     public function getControllerName()
     {
-        return $this->getGet('c', 'index');
+        return $this->getGet('c', 'Dashboard');
     }
 
 

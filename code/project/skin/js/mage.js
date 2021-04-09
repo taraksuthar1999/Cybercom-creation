@@ -8,6 +8,7 @@ Base.prototype = {
     url: null,
     params: {},
     method: 'post',
+    form: null,
     setUrl: function (url) {
         this.url = url;
         return this;
@@ -52,6 +53,17 @@ Base.prototype = {
         }
         return this;
     },
+    setForm: function (button) {
+
+        this.form = $(button).closest("form");
+        this.setMethod(this.form.attr('method'));
+
+        this.setUrl(this.form.attr('action'));
+
+        this.setParams(this.form.serializeArray());
+
+        return this;
+    },
     load: function () {
         var request = jQuery.ajax({
             method: this.getMethod(),
@@ -59,9 +71,37 @@ Base.prototype = {
             data: this.getParams(),
             success: function (response) {
 
-                $(response.element.selector).html(response.element.html);
-            }
+                mage.manageHtml(response);
+                // $(response.element.selector).html(response.element.html);
+            },
         });
+    },
+    manageAction: function (button, url) {
+
+        this.form = $(button).closest("form");
+
+        this.form.attr('action', url);
+
+        this.setForm(button);
+        return this;
+    },
+    manageHtml: function (response) {
+
+
+        if (typeof response.element == 'undefined') {
+            return false;
+        }
+        else if (typeof response.element == 'object') {
+
+            $.each(response.element, function (i, element) {
+
+                $(element.selector).html(element.html);
+            });
+        }
+        else {
+            $(response.element.selector).html(response.element.html);
+
+        }
     }
 
 

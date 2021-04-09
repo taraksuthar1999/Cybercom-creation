@@ -11,7 +11,7 @@ class Front
         $actionName = $request->getActionName() . 'Action';
         $controllerName = ucfirst($request->getControllerName());
 
-        $controllerName = \Mage::prepareClassName('Controller', $controllerName);
+        $controllerName = \Mage::prepareClassName('Controller\Admin', $controllerName);
         
         //$controllerName = 'Controller_' . $controllerName;
         $controller = \Mage::getController($controllerName);

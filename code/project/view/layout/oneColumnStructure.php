@@ -24,6 +24,22 @@
             width:100%;
         }
 
+ .tabbar {
+            background: #fff;
+            margin-top: 20%;
+            margin-bottom: 5%;
+            width: 100%;
+            padding: 10%;
+        }
+
+        .tabbar {
+            border-radius: 1rem;
+        }
+        .tabbar-link{
+            width:100%;
+            margin-top:auto;
+            margin-bottom:5px;
+        }
         .contact-form {
             background: #fff;
             margin-top: 5%;
@@ -48,6 +64,29 @@
             margin-top: -10%;
             text-align: center;
             color: #0062cc;
+        }
+        .contact-edit {
+            background: #fff;
+            margin-top: 5%;
+            margin-bottom: 15%;
+            width: 100%;
+        }
+        .contact-edit form {
+            padding: 14%;
+        }
+
+        .contact-edit form .row {
+            margin-bottom: 3%;
+        }
+
+        .contact-edit h3 {
+            margin-bottom: 4%;
+            margin-top: -4%;
+            text-align: center;
+            color: #0062cc;
+        }
+        .contact-edit .form-control {
+            border-radius: 1rem;
         }
 
         .contact-form .btnContact {
@@ -108,12 +147,16 @@ position:absolute;
 
     <script type="text/javascript" src="<?php echo $this->getUrl()->baseUrl('skin/js/jquery-3.6.0.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo $this->getUrl()->baseUrl('skin/js/mage.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo $this->getUrl()->baseUrl('skin/js/config.js'); ?>"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <body class="fit">
 <div class="row fit"><?php print_r($this->children['Header']->toHtml()); ?></div>
-<div class="row fit"><?php print_r($this->createBlock('Block\Layout\Message')->toHtml()); ?></div>
+
+<div class="row fit"><?php //print_r($this->children['Message']->toHtml()); ?></div>
+
 <div class="row fit"><?php print_r($this->children['Content']->toHtml()); ?></div>
 <div class="row fit"><?php print_r($this->children['Footer']->toHtml()); ?></div>
 

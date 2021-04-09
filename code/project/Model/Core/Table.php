@@ -79,6 +79,7 @@ class Table
     {
 
 
+
         if (!array_key_exists($this->getPrimaryKey(), $this->data)) {
 
             $keys = "`" . implode("`,`", array_keys($this->data)) . "`";
@@ -92,6 +93,7 @@ class Table
 
 
         } else {
+
             $Id = $this->data[$this->getPrimaryKey()];
 
             foreach ($this->data as $key => $value) {
@@ -100,7 +102,7 @@ class Table
             $query = "UPDATE `{$this->getTableName()}` SET " . implode(',', $pair) . " WHERE `{$this->getPrimaryKey()}` = {$Id}";
 
             if (!$this->getAdapter()->update($query)) {
-
+                return false;
             }
 
         }
@@ -109,8 +111,20 @@ class Table
         return $this;
 
     }
-    public function load($value)
+    public function load($value, $optional = null)
     {
+
+        if ($optional) {
+
+            $query = "SELECT * FROM `{$this->getTableName()}` WHERE `{$optional}`='{$value}'";
+
+            $productData = $this->fetchRow($query);
+
+            if (!$productData) {
+                return false;
+            }
+            return $this;
+        }
         $value = (int)$value;
         $query = "SELECT * FROM `{$this->getTableName()}` WHERE `{$this->getPrimaryKey()}`={$value}";
         $productData = $this->fetchRow($query);
@@ -122,11 +136,13 @@ class Table
     }
     public function delete($productId = null)
     {
+
         if (!$productId) {
             if (!array_key_exists($this->getPrimaryKey(), $this->data)) {
                 return false;
             }
             $productId = $this->data[$this->getPrimaryKey()];
+
         }
 
         $query = "DELETE FROM `{$this->getTableName()}` WHERE `{$this->getPrimaryKey()}`='{$productId}'";
@@ -134,6 +150,7 @@ class Table
         if (!$this->getAdapter()->delete($query)) {
             return false;
         }
+
         return $this;
     }
     public function fetchRow($query = null)

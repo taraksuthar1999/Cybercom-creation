@@ -32,6 +32,20 @@ class Customer extends \Model\Core\Table
             self::STATUS_DISABLED => 'Disable'
         ];
     }
+    public function getBillingAddress()
+    {
+        $address = \Mage::getModel('Model\Address');
+        $query = "SELECT * FROM `{$address->getTableName()}` WHERE `customerId`='{$this->id}' AND `addressType`='billing'";
+        $address = $address->fetchRow($query);
+        return $address;
+    }
+    public function getShippingAddress()
+    {
+        $address = \Mage::getModel('Model\Address');
+        $query = "SELECT * FROM `{$address->getTableName()}` WHERE `customerId`='{$this->id}' AND `addressType`='shipping'";
+        $address = $address->fetchRow($query);
+        return $address;
+    }
 }
 
 ?>
